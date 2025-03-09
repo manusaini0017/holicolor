@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holi Color Splash</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #fff;
+        }
+        .splash {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+           
+            border-radius: 50%;
+           
+            
+            animation: splashAnim 0.6s ease-out forwards;  
+        }
+         @keyframes splashAnim {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(5);
+                opacity: 0;
+            }
+        } 
+        h1{  font-size: 6rem;  position: absolute; top:20%; left: 30%;}
+        small{position: absolute; font-size: 2rem;}
+    </style>
+</head>
+<body>
+    <h1>Happy Holly</h1>
+  
+   
+    <script>
+        document.addEventListener("mousemove", function(event) {
+            document.querySelector("h1").style.color= getRandomColor();
+          
+            const splash = document.createElement("div");
+            splash.classList.add("splash");
+            splash.style.left = `${event.clientX}px`;
+            splash.style.top = `${event.clientY}px`;
+            splash.style.background = getRandomColor();
+            document.body.appendChild(splash);
+
+        });
+
+        function getRandomColor() {
+            const colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
